@@ -15,7 +15,7 @@
 
 .second-section{
     width: 20%;
-    background: center / cover repeat-y url("Book_img.jpg");
+    background: center / cover repeat-y url("../images/Book_img.jpg");
     height: 520px;
     margin-bottom: 10px;
 }
