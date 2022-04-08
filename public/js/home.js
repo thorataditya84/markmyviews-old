@@ -47,3 +47,11 @@ function signUpHandler (event) {
 </div>
     `
 }
+
+
+
+//validations for login page;
+
+
+
+//validations for SignUp page;
