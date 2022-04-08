@@ -28,6 +28,10 @@ app.get('/category', (req, res) => {
     res.render('category')
 })
 
+app.get('/book',(req,res)=>{
+    res.render('book')
+})
+
 app.listen(port, () => {
     console.log(
         `Server running successfully...\nLink for the server:-http://127.0.0.1:${port}`
