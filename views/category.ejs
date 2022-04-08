@@ -46,7 +46,6 @@
     <script src="js/home.js"></script>
     <script src="js/category.js"></script>
   </head>
-
   <body>
     <div id="login_container">
       <div class="container_login">
@@ -137,6 +136,7 @@
       </div>
     </section>
     <!-- content of the categories page starts here -->
+    <h5 style="font-size: 1.5rem;font-weight: bold;margin:1vh auto;">Categories</h5>
     <div id="main_container"></div>
     <!-- content of the categories page ends here -->
     <!-- Footer -->
@@ -150,5 +150,19 @@
       </div>
     </footer>
   </body>
+  <script>
+    document.getElementById("main_container").innerHTML = "";
+    categories.map((element) => {
+      document.getElementById("main_container").innerHTML += `
+      <div class="category_container">
+        <a class="card" style="width: 10rem" href=${element.hreflink}>
+          <img src=${element.img} class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">${element.title}</h5>
+          </div>
+        </a>
+      </div>  
+`;
+    });
+  </script>
 </html>
-
