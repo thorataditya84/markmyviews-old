@@ -50,13 +50,14 @@
         <div class="screen">
           <div class="screen__content">
             <a href="#" class="close" onclick="closeButtonHandler()"></a>
-            <form class="login__">
+            <form class="login__" action="/login" method="post">
               <div class="login__field">
                 <i class="login__icon fas fa-user"></i>
                 <input
                   type="text"
                   class="login__input"
                   placeholder="Username"
+                  name="Username"
                 />
               </div>
               <div class="login__field">
@@ -65,9 +66,10 @@
                   type="password"
                   class="login__input"
                   placeholder="Password"
+                  name="Password"
                 />
               </div>
-              <button class="button login__submit">
+              <button class="button login__submit" type="submit">
                 <span class="button__text">Log In Now</span>
                 <i class="button__icon fas fa-chevron-right"></i>
               </button>

@@ -3,11 +3,12 @@ const bodyParser = require('body-parser')
 const ejs = require('ejs')
 const app = express()
 const bcrypt = require('bcrypt')
+const mongoose = require('mongoose')
 const saltRounds = 10
 const myPlaintextPassword = 's0//P4$$w0rD'
 const port = 4000
 //importing models here;
-const { UserInfo } = require('./models/Signup')
+const { UserInfo } = require('./models/User')
 //importing models ends here;
 app.set('view engine', 'ejs')
 
@@ -56,6 +57,27 @@ app.post('/signUp', (req, res) => {
     .catch(error => {
       res.json(error)
     })
+})
+
+app.post('/login', (req, res) => {
+  const Username = req.body.Username
+  const Password = req.body.Password
+  const salt = bcrypt.genSaltSync(10)
+  const hashedPassword = bcrypt.hashSync(req.body.Password, salt)
+  UserInfo.findOne(
+    {
+      $and: [{ Username: { $eq: Username } }, { Password: { $eq: Password } }]
+    },
+    function (err, User) {
+      if (err) return handleError(err)
+      if (!User) {
+        res.redirect('/')
+      } else {
+        res.redirect('/')
+        console.log('Welcome  ' + User.Email)
+      }
+    }
+  )
 })
 
 //port;
