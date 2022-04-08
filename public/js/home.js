@@ -10,18 +10,18 @@ function signUpHandler (event) {
   <div class="screen">
     <div class="screen__content">
       <a href="#" class="close" onclick="closeButtonHandler()"></a>
-      <form class="login__" style="padding-top:70px;">
+      <form class="login__" style="padding-top:70px;" method="post" action="/signUp">
         <div class="login__field">
           <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="Full Name" />
+          <input type="text" class="login__input" placeholder="Full Name" name="FullName" />
         </div>
         <div class="login__field">
           <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="Email" />
+          <input type="text" class="login__input" placeholder="Email" name="Email" />
         </div>
         <div class="login__field">
           <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="Create Username" />
+          <input type="text" class="login__input" placeholder="Create Username" name="Username"/>
         </div>
         <div class="login__field">
           <i class="login__icon fas fa-lock"></i>
@@ -29,6 +29,7 @@ function signUpHandler (event) {
             type="password"
             class="login__input"
             placeholder="Create Password"
+            name="Password"
           />
         </div>
         <button class="button login__submit">
