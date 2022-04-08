@@ -43,11 +43,60 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="js/category.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/category.js"></script>
   </head>
 
   <body>
+    <div id="login_container">
+      <div class="container_login">
+        <div class="screen">
+          <div class="screen__content">
+            <a href="#" class="close" onclick="closeButtonHandler()"></a>
+            <form class="login__">
+              <div class="login__field">
+                <i class="login__icon fas fa-user"></i>
+                <input
+                  type="text"
+                  class="login__input"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="login__field">
+                <i class="login__icon fas fa-lock"></i>
+                <input
+                  type="password"
+                  class="login__input"
+                  placeholder="Password"
+                />
+              </div>
+              <button class="button login__submit">
+                <span class="button__text">Log In Now</span>
+                <i class="button__icon fas fa-chevron-right"></i>
+              </button>
+              <button class="button login__submit" onclick="signUpHandler()">
+                <span class="button__text">Sign Up Now</span>
+                <i class="button__icon fas fa-chevron-right"></i>
+              </button>
+            </form>
+          </div>
+          <div class="screen__background">
+            <span
+              class="screen__background__shape screen__background__shape4"
+            ></span>
+            <span
+              class="screen__background__shape screen__background__shape3"
+            ></span>
+            <span
+              class="screen__background__shape screen__background__shape2"
+            ></span>
+            <span
+              class="screen__background__shape screen__background__shape1"
+            ></span>
+          </div>
+        </div>
+      </div>
+    </div>
     <section class="colored-section" id="title">
       <div class="container-fluid">
         <!-- Nav Bar -->
