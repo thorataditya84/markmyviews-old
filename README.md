@@ -1,4 +1,4 @@
-# Project-Site - WARNING - Do not make changes in this branch
+# Project-Site
 
 ## You are in main branch - change branch to master
 
