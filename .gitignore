@@ -1,2 +1,3 @@
 # Ignore README File
 README.md
+**/node_modules
