@@ -52,7 +52,7 @@ function closeButtonHandler (event) {
             ></span>
           </div>
         </div>
-      </div>`;
+      </div>`
 }
 function signUpHandler (event) {
   document.getElementById('login_container').innerHTML = `
@@ -99,10 +99,6 @@ function signUpHandler (event) {
     `
 }
 
-
-
 //validations for login page;
-
-
 
 //validations for SignUp page;

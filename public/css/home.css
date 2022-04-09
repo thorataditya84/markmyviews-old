@@ -313,7 +313,16 @@ p {
   padding: 30px;
   padding-top: 156px;
 }
-
+.logout{
+  background-color: transparent;
+  border:1px solid white;
+  border-radius: 10px;
+  color:white;
+}
+.logout:hover{
+  background-color: white;
+  color:black;
+}
 .login__field {
   padding: 20px 0px;
   position: relative;
@@ -435,15 +444,15 @@ p {
 .efecto {
   height: 50px;
   width: 50px;
-  background-image: url("../images/user.png");
+  background-image: url("https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 50%;
   position: relative;
-  border: 5px solid #4364f7;
+  border: 5px solid #ff5174;
 }
-.efecto::after,
-.efecto::before {
+.efecto::before,
+.efecto::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -451,16 +460,9 @@ p {
   border-radius: 50%;
   background: #4364f7;
   z-index: -1;
-  animation: bo 1.3s infinite ease;
 }
 .efecto::after {
   z-index: -2;
-  animation-delay: 0.2s;
 }
-@keyframes bo {
-  to {
-    transform: scale(1.7);
-    opacity: 0;
-  }
-}
+
 /* avatar css ends here */
