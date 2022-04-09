@@ -429,3 +429,38 @@ p {
 }
 
 /* css for login ends */
+
+/* avatar css */
+
+.efecto {
+  height: 50px;
+  width: 50px;
+  background-image: url("../images/user.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  position: relative;
+  border: 5px solid #4364f7;
+}
+.efecto::after,
+.efecto::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #4364f7;
+  z-index: -1;
+  animation: bo 1.3s infinite ease;
+}
+.efecto::after {
+  z-index: -2;
+  animation-delay: 0.2s;
+}
+@keyframes bo {
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+/* avatar css ends here */
