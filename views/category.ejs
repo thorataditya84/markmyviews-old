@@ -125,18 +125,33 @@
               <li class="nav-item">
                 <a class="nav-link" href="#cta">About</a>
               </li>
+              <% if(Username){%>
+              <li class="nav-item">
+                <div class="efecto"></div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  <form action="/logout" method="post">
+                    <button class="logout" type="submit">Logout</button>
+                  </form>
+                </a>
+              </li>
+              <%}else{%>
               <li class="nav-item">
                 <a class="nav-link" onclick="loginPageHandler()">
                   <div class="login">Login</div>
                 </a>
               </li>
+              <%}%>
             </ul>
           </div>
         </nav>
       </div>
     </section>
     <!-- content of the categories page starts here -->
-    <h5 style="font-size: 1.5rem;font-weight: bold;margin:1vh auto;">Categories</h5>
+    <h5 style="font-size: 1.5rem; font-weight: bold; margin: 1vh auto">
+      Categories
+    </h5>
     <div id="main_container"></div>
     <!-- content of the categories page ends here -->
     <!-- Footer -->

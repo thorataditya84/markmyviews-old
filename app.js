@@ -37,7 +37,9 @@ app.get('/logout', (req, res) => {
 })
 
 app.get('/category', (req, res) => {
-  res.render('category')
+  const { cookies } = req
+  if (cookies.UserInfo) res.render('category', { Username: cookies.UserInfo })
+  else res.render('category', { Username: null })
 })
 
 app.get('/book', (req, res) => {
