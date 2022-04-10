@@ -61,7 +61,7 @@ app.get('/books:category', (req, res) => {
   const { cookies } = req
   BookInfo.find({ Category: categorySelected })
     .skip(0)
-    .limit(1000)
+    .limit(100)
     .then(data => {
       if (cookies.UserInfo)
         res.render('books', {
@@ -78,12 +78,33 @@ app.get('/books:category', (req, res) => {
     })
 })
 
-app.get('/book', (req, res) => {
+app.get('/book:ISBN', (req, res) => {
+  const ISBN = req.params['ISBN'].replace(':', '')
   const { cookies } = req
-  if ('UserInfo' in cookies) res.render('book', { Username: cookies.UserInfo })
-  else {
-    res.render('book', { Username: null })
-  }
+  BookInfo.findOne({ ISBN: ISBN }).then(data => {
+    if (cookies.UserInfo)
+      res.render('book', {
+        Username: cookies.UserInfo,
+        Title: data.Title,
+        Author: data.Author,
+        Rating: data.Rating,
+        ISBN: data.ISBN,
+        Image: data.Image
+      })
+    else
+      res.render('book', {
+        Username: null,
+        Title: data.Title,
+        Author: data.Author,
+        Rating: data.Rating,
+        ISBN: data.ISBN,
+        Image: data.Image
+      })
+  })
+  // if ('UserInfo' in cookies) res.render('book', { Username: cookies.UserInfo })
+  // else {
+  //   res.render('book', { Username: null })
+  // }
 })
 //post requests;
 

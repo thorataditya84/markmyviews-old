@@ -159,19 +159,24 @@
       <h5 class="section-heading">Books</h5>
       <div id="main_container">
         <% Books.forEach(Book => {%>
-        <div class="card" style="width: inherit">
-          <img
-            src="<%= Book.Image %>"
-            class="card-img-top cover"
-            alt="Image not found!"
-          />
-          <div class="card-body">
-            <h5 class="card-title"><%=Book.Title%></h5>
-            <p class="card-text">ISBN- <%=Book.ISBN%></p>
-            <p class="card-text">Rating- <%=Book.Rating%></p>
-            <p class="card-text">Author- <%=Book.Author%></p>
+        <a
+          href="/book:<%=Book.ISBN%>"
+          style="text-decoration: none; text-emphasis: none; color: black"
+        >
+          <div class="card" style="width: inherit">
+            <img
+              src="<%= Book.Image %>"
+              class="card-img-top cover"
+              alt="Image not found!"
+            />
+            <div class="card-body">
+              <h5 class="card-title"><%=Book.Title%></h5>
+              <p class="card-text">ISBN- <%=Book.ISBN%></p>
+              <p class="card-text">Rating- <%=Book.Rating%></p>
+              <p class="card-text">Author- <%=Book.Author%></p>
+            </div>
           </div>
-        </div>
+        </a>
         <%}) %>
       </div>
       <!-- content of the books page ends here -->

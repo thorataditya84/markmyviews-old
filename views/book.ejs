@@ -157,10 +157,10 @@
     <section>
       <div class="container-fluid mycontainer">
         <div class="bookImage">
-          <img src="images/image.webp" alt="Image not found!" />
+          <img src="<%=Image%>" alt="Image not found!" />
         </div>
         <div class="scrollableDiv">
-          <h5 style="text-align: center">Title of the book</h5>
+          <h5 style="text-align: center"><%=Title%></h5>
           <div
             style="
               display: flex;
@@ -174,14 +174,14 @@
               style="--rating: 5"
               aria-label="Rating of this product is 2.3 out of 5."
             >
-              <p style="font-size: 1rem">51 Ratings and 20 Reviews</p>
+              <p style="font-size: 1rem"><%=Rating%></p>
             </div>
           </div>
           <h5
             style="display: flex; flex-direction: row; justify-content: center"
           >
             Author
-            <p style="font-weight: 300">&nbsp; Housel Morgan</p>
+            <p style="font-weight: 300">&nbsp; <%=Author%></p>
           </h5>
           <h5>Description</h5>
           <div style="margin: 1vh 1vw; padding: 1vh 1vw; text-align: initial">
