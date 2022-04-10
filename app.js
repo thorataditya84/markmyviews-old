@@ -8,6 +8,7 @@ const port = 4000
 //importing models here;
 const { UserInfo } = require('./models/User')
 const { BookInfo } = require('./models/bookInfo')
+const { ReviewDB } = require('./models/Review')
 //importing models ends here;
 const { cookie } = require('express/lib/response')
 const req = require('express/lib/request')
@@ -24,6 +25,7 @@ app.use(express.static('public'))
 //app.use ends here;
 //get requests;
 var count = 1
+var bookStartIndex = 0
 app.get('/', (req, res) => {
   const { cookies } = req
   if (cookies.UserInfo)
@@ -52,17 +54,26 @@ app.get('/logout', (req, res) => {
 
 app.get('/category', (req, res) => {
   const { cookies } = req
-  if (cookies.UserInfo) res.render('category', { Username: cookies.UserInfo })
-  else res.render('category', { Username: null })
+  if (cookies.UserInfo)
+    res.render('category', {
+      Username: cookies.UserInfo
+    })
+  else
+    res.render('category', {
+      Username: null
+    })
 })
 
 app.get('/books:category', (req, res) => {
   const categorySelected = req.params['category'].replace(':', '')
   const { cookies } = req
-  BookInfo.find({ Category: categorySelected })
-    .skip(0)
-    .limit(100)
+  BookInfo.find({
+    Category: categorySelected
+  })
+    .skip(bookStartIndex)
+    .limit(bookStartIndex + 60)
     .then(data => {
+      bookStartIndex = bookStartIndex + 60
       if (cookies.UserInfo)
         res.render('books', {
           Username: cookies.UserInfo,
@@ -79,27 +90,60 @@ app.get('/books:category', (req, res) => {
 })
 
 app.get('/book:ISBN', (req, res) => {
-  const ISBN = req.params['ISBN'].replace(':', '')
+  const isbn = req.params['ISBN'].replace(':', '')
   const { cookies } = req
-  BookInfo.findOne({ ISBN: ISBN }).then(data => {
-    if (cookies.UserInfo)
-      res.render('book', {
-        Username: cookies.UserInfo,
-        Title: data.Title,
-        Author: data.Author,
-        Rating: data.Rating,
-        ISBN: data.ISBN,
-        Image: data.Image
-      })
-    else
-      res.render('book', {
-        Username: null,
-        Title: data.Title,
-        Author: data.Author,
-        Rating: data.Rating,
-        ISBN: data.ISBN,
-        Image: data.Image
-      })
+  BookInfo.findOne({
+    ISBN: isbn
+  }).then(data => {
+    ReviewDB.find({
+      ISBN: isbn
+    }).then(review => {
+      if (review) {
+        if ('UserInfo' in cookies) {
+          res.render('book', {
+            Username: cookies.UserInfo,
+            Title: data.Title,
+            Author: data.Author,
+            Rating: review.Rating,
+            ISBN: data.ISBN,
+            Image: data.Image,
+            Reviews: review
+          })
+        } else {
+          res.render('book', {
+            Username: null,
+            Title: data.Title,
+            Author: data.Author,
+            Rating: review.Rating,
+            ISBN: data.ISBN,
+            Image: data.Image,
+            Reviews: review
+          })
+        }
+      } else {
+        if ('UserInfo' in cookies) {
+          res.render('book', {
+            Username: cookies.UserInfo,
+            Title: data.Title,
+            Author: data.Author,
+            Rating: review.Rating,
+            ISBN: data.ISBN,
+            Image: data.Image,
+            Reviews: null
+          })
+        } else {
+          res.render('book', {
+            Username: null,
+            Title: data.Title,
+            Author: data.Author,
+            Rating: review.Rating,
+            ISBN: review.ISBN,
+            Image: data.Image,
+            Reviews: null
+          })
+        }
+      }
+    })
   })
   // if ('UserInfo' in cookies) res.render('book', { Username: cookies.UserInfo })
   // else {
@@ -112,6 +156,7 @@ app.post('/logout', (req, res) => {
   res.clearCookie('UserInfo')
   res.redirect('/')
   count = 1
+  bookStartIndex = 0
 })
 
 app.post('/signUp', (req, res) => {
@@ -145,7 +190,9 @@ app.post('/login', (req, res) => {
   const Password = req.body.Password
   UserInfo.findOne(
     {
-      Username: { $eq: Username }
+      Username: {
+        $eq: Username
+      }
     },
     function (err, User) {
       if (err) return handleError(err)
@@ -167,7 +214,20 @@ app.post('/login', (req, res) => {
     }
   )
 })
-
+app.post('/review:ISBN', (req, res) => {
+  const { cookies } = req
+  const ISBN = req.params['ISBN'].replace(':', '')
+  const Username = cookies.UserInfo[0]
+  const Rating = req.body.Rating
+  const Review = req.body.Review
+  const newReview = new ReviewDB({
+    ISBN: ISBN,
+    Username: Username,
+    Rating: Rating,
+    Review: Review
+  })
+  newReview.save().then(data => res.redirect(`/book:${ISBN}`))
+})
 //post request to upload any book;
 // app.post('/justdoit', (req, res) => {
 //   JsonBookData.map((book)=>{

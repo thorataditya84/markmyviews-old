@@ -22,7 +22,7 @@ var ReviewSchema = new Schema({
     required: true
   },
   Rating: {
-    type: double,
+    type: String,
     required: true
   },
   Review: {
@@ -31,5 +31,5 @@ var ReviewSchema = new Schema({
   }
 })
 
-var ReviewDB = mongoose.model('UserInfo', ReviewSchema)
+var ReviewDB = mongoose.model('ReviewDB', ReviewSchema)
 module.exports = { ReviewDB }
