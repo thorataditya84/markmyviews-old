@@ -20,10 +20,21 @@ app.use(cookieParser())
 app.use(express.static('public'))
 //app.use ends here;
 //get requests;
+var count = 1
 app.get('/', (req, res) => {
   const { cookies } = req
-  if (cookies.UserInfo) res.render('home', { Username: cookies.UserInfo })
-  else res.render('home', { Username: null })
+  if (cookies.UserInfo)
+    res.render('home', {
+      Username: cookies.UserInfo,
+      message: `Welcome ${cookies.UserInfo}!`,
+      count: count++
+    })
+  else
+    res.render('home', {
+      Username: null,
+      message: 'Please login or signup !',
+      count: count++
+    })
 })
 
 app.get('/login', (req, res) => {
@@ -42,6 +53,10 @@ app.get('/category', (req, res) => {
   else res.render('category', { Username: null })
 })
 
+app.get('/books', (req, res) => {
+  res.render('books')
+})
+
 app.get('/book', (req, res) => {
   res.render('book')
 })
@@ -50,6 +65,7 @@ app.get('/book', (req, res) => {
 app.post('/logout', (req, res) => {
   res.clearCookie('UserInfo')
   res.redirect('/')
+  count = 1
 })
 
 app.post('/signUp', (req, res) => {
@@ -70,6 +86,7 @@ app.post('/signUp', (req, res) => {
     .then(data => {
       res.clearCookie('Userinfo')
       res.cookie('UserInfo', [data.Username])
+      count = 1
       res.redirect('/')
     })
     .catch(error => {
@@ -94,6 +111,7 @@ app.post('/login', (req, res) => {
           if (response) {
             res.clearCookie('UserInfo')
             res.cookie('UserInfo', [User.Username])
+            count = 1
             res.redirect('/')
           } else {
             res.redirect('/')

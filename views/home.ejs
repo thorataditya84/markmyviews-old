@@ -45,6 +45,24 @@
   </head>
 
   <body>
+    <!-- alert div starts here -->
+    <% if(count == 1){%>
+    <div class="alert_container" style="z-index: 3">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%=message%>
+        <button
+          type="button"
+          class="alert-close-btn"
+          data-dismiss="alert"
+          aria-label="Close"
+          style="outline: none"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+    <%}%>
+    <!-- alert div ends here -->
     <div id="login_container">
       <div class="container_login">
         <div class="screen">
@@ -119,6 +137,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/category">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/books">Books</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#pricing">Contact</a>
