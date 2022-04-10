@@ -7,9 +7,12 @@ const bcrypt = require('bcrypt')
 const port = 4000
 //importing models here;
 const { UserInfo } = require('./models/User')
-const { cookie } = require('express/lib/response')
+const { BookInfo } = require('./models/bookInfo')
 //importing models ends here;
+const { cookie } = require('express/lib/response')
+const req = require('express/lib/request')
 app.set('view engine', 'ejs')
+// const JsonBookData=require('./public/general.json')
 //add app.use here;
 app.use(
   bodyParser.urlencoded({
@@ -53,12 +56,34 @@ app.get('/category', (req, res) => {
   else res.render('category', { Username: null })
 })
 
-app.get('/books', (req, res) => {
-  res.render('books')
+app.get('/books:category', (req, res) => {
+  const categorySelected = req.params['category'].replace(':', '')
+  const { cookies } = req
+  BookInfo.find({ Category: categorySelected })
+    .skip(0)
+    .limit(1000)
+    .then(data => {
+      if (cookies.UserInfo)
+        res.render('books', {
+          Username: cookies.UserInfo,
+          Books: data,
+          Category: categorySelected
+        })
+      else
+        res.render('books', {
+          Username: null,
+          Books: data,
+          Category: categorySelected
+        })
+    })
 })
 
 app.get('/book', (req, res) => {
-  res.render('book')
+  const { cookies } = req
+  if ('UserInfo' in cookies) res.render('book', { Username: cookies.UserInfo })
+  else {
+    res.render('book', { Username: null })
+  }
 })
 //post requests;
 
@@ -121,6 +146,21 @@ app.post('/login', (req, res) => {
     }
   )
 })
+
+//post request to upload any book;
+// app.post('/justdoit', (req, res) => {
+//   JsonBookData.map((book)=>{
+//     const newBook= new BookInfo({
+//       Title:book.title,
+//       Author:book.authors,
+//       ISBN:book.isbn13,
+//       Rating:book.average_rating,
+//       Image:`https://covers.openlibrary.org/b/isbn/${book.isbn13}-L.jpg`,
+//       Category:"general"
+//     })
+//     newBook.save();
+//   })
+// })
 
 //port;
 app.listen(port, () => {

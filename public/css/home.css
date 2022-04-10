@@ -52,10 +52,9 @@ p {
 }
 
 /* Sections */
-
 .colored-section {
-  background-color: #ff4c68;
   color: #fff;
+  background-color: #ff4c68 !important;
 }
 
 .white-section {

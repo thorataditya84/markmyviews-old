@@ -1,24 +1,24 @@
 #main_container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 1vh 1vw;
   padding: 1vh 1vw;
   justify-content: center;
   align-items: center;
 }
-.container-fluid{
-  padding:0;
+.container-fluid {
+  padding: 0;
 }
 #title .container-fluid {
   padding: 3% 15% 1%;
 }
-.navbar{
-    padding:0;
+.navbar {
+  padding: 0;
 }
 .category_container a {
   text-emphasis: none;
   text-decoration: none;
-  color:black;
+  color: black;
 }
 .card-img-top {
   width: 50px;

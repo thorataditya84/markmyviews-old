@@ -2,62 +2,61 @@ const categories = [
   {
     title: "Editor's Picks",
     img: 'images/Editor.jpg',
-    hreflink: '/editor-picks'
+    hreflink: '/books:editor-picks'
   },
   {
     title: 'Most Popular',
     img: 'images/most.jpg',
-    hreflink: '/most-popular'
+    hreflink: '/books:most-popular'
   },
   {
     title: 'Academic & Education',
     img: 'images/academic.jpg',
-    hreflink: '/Academic&Education'
+    hreflink: '/books:Academic&Education'
   },
   {
     title: 'Art',
     img: 'images/art.jpg',
-    hreflink: '/art'
+    hreflink: '/books:art'
   },
   {
     title: 'Biography',
     img: 'images/biography.jpg',
-    hreflink: 'biography'
+    hreflink: '/books:biography'
   },
   {
     title: 'Business & Career',
     img: 'images/business.jpg',
-    hreflink: 'Business&Career'
+    hreflink: '/books:Business&Career'
   },
   {
     title: 'Environment',
     img: 'images/env.jpg',
-    hreflink: 'Environment'
+    hreflink: '/books:Environment'
   },
   {
     title: 'Health & Fitness',
     img: 'images/health.jpg',
-    hreflink: 'Health&Fitness'
+    hreflink: '/books:Health&Fitness'
   },
   {
     title: 'Technology',
     img: 'images/tech.jpg',
-    hreflink: 'Technology'
+    hreflink: '/books:Technology'
   },
   {
     title: 'Science & Research',
     img: 'images/science.jpg',
-    hreflink: 'Science&Research'
-  }
-  ,
+    hreflink: '/books:Science&Research'
+  },
   {
     title: 'Personal Growth',
     img: 'images/personal.jpg',
-    hreflink: 'personal-growth'
+    hreflink: '/books:personal-growth'
   },
   {
     title: 'Fiction & Literature',
     img: 'images/fic.jpg',
-    hreflink: 'Fiction&Literature'
+    hreflink: '/books:Fiction&Literature'
   }
 ]

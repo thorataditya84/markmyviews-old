@@ -52,13 +52,14 @@
         <div class="screen">
           <div class="screen__content">
             <a href="#" class="close" onclick="closeButtonHandler()"></a>
-            <form class="login__">
+            <form class="login__" action="/login" method="post">
               <div class="login__field">
                 <i class="login__icon fas fa-user"></i>
                 <input
                   type="text"
                   class="login__input"
                   placeholder="Username"
+                  name="Username"
                 />
               </div>
               <div class="login__field">
@@ -67,9 +68,10 @@
                   type="password"
                   class="login__input"
                   placeholder="Password"
+                  name="Password"
                 />
               </div>
-              <button class="button login__submit">
+              <button class="button login__submit" type="submit">
                 <span class="button__text">Log In Now</span>
                 <i class="button__icon fas fa-chevron-right"></i>
               </button>
@@ -116,8 +118,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/category">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/books:general">Books</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#pricing">Contact</a>
@@ -125,11 +130,24 @@
               <li class="nav-item">
                 <a class="nav-link" href="#cta">About</a>
               </li>
+              <% if(Username){%>
+              <li class="nav-item">
+                <div class="efecto"></div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  <form action="/logout" method="post">
+                    <button class="logout" type="submit">Logout</button>
+                  </form>
+                </a>
+              </li>
+              <%}else{%>
               <li class="nav-item">
                 <a class="nav-link" onclick="loginPageHandler()">
                   <div class="login">Login</div>
                 </a>
               </li>
+              <%}%>
             </ul>
           </div>
         </nav>
@@ -166,7 +184,7 @@
             <p style="font-weight: 300">&nbsp; Housel Morgan</p>
           </h5>
           <h5>Description</h5>
-          <div style="margin:1vh 1vw;padding:1vh 1vw;text-align: initial;">
+          <div style="margin: 1vh 1vw; padding: 1vh 1vw; text-align: initial">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit quae
             at maxime iusto fugiat id quam ducimus odit iste et nihil beatae
             minima dignissimos ipsum deserunt consequuntur, praesentium impedit
