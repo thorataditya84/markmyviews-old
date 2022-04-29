@@ -9,12 +9,13 @@ const PORT = process.env.PORT || 5000
 const { UserInfo } = require('./models/User')
 const { BookInfo } = require('./models/bookInfo')
 const { ReviewDB } = require('./models/Review')
+const { newBookInfo } = require('./models/newBookmodal')
 //importing models ends here;
 const { cookie } = require('express/lib/response')
 const req = require('express/lib/request')
 app.set('view engine', 'ejs')
 // const JsonBookData=require('./public/general.json')
-//add app.use here;
+//add app.use here
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -43,7 +44,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-  res.render('about')
+  const { cookies } = req
+  res.render('about', { Username: cookies.UserInfo })
 })
 
 app.get('/login', (req, res) => {
@@ -154,7 +156,54 @@ app.get('/book:ISBN', (req, res) => {
   //   res.render('book', { Username: null })
   // }
 })
+//this get function is for uploading the books;
+app.get('/upload', (req, res) => {
+  res.render('book-upload')
+})
 //post requests;
+
+app.post('/upload', (req, res) => {
+  const newBook = new newBookInfo({
+    Title: req.body.title,
+    ISBN: req.body.ISBN,
+    Image: req.body.url,
+    Author: req.body.author,
+    Rating: req.body.rating,
+    Category: req.body.category,
+    Description: req.body.desc
+  })
+  newBook
+    .save()
+    .then(data => {
+      res.redirect('/upload')
+    })
+    .catch(error => {
+      res.json(error)
+    })
+})
+
+app.post('/search-result', (req, res) => {
+  const { cookies } = req
+  count = 1
+  bookStartIndex = 0
+  var keyword = req.body.keyword
+  BookInfo.find({ Title: { $regex: `.*${keyword}.*`, $options: 'i' } }).then(
+    data => {
+      if (cookies.UserInfo)
+        res.render('books', {
+          Username: cookies.UserInfo,
+          Books: data,
+          Category: null
+        })
+      else
+        res.render('books', {
+          Username: null,
+          Books: data,
+          Category: null
+        })
+    }
+  )
+})
 
 app.post('/logout', (req, res) => {
   res.clearCookie('UserInfo')

@@ -2,8 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <% if(Category){%>
     <title><%=Category.toUpperCase()%></title>
-
+    <%}else{%>
+    <title>Result</title>
+    <%}%>
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu"
@@ -154,8 +157,26 @@
       </div>
     </section>
     <!-- Page content -->
+    <!-- content of the books page starts here -->
     <section>
-      <!-- content of the books page starts here -->
+      <form action="/search-result" method="post">
+        <div class="wrap">
+          <div class="search">
+            <input
+              name="keyword"
+              class="searchTerm"
+              placeholder="What are you looking for?"
+            />
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- This section is for searching the books -->
+    <section>
+      <!-- end of searching book section -->
       <h5 class="section-heading">Books</h5>
       <div id="main_container">
         <% Books.forEach(Book => {%>
