@@ -1,62 +1,72 @@
 const categories = [
   {
-    title: "Editor's Picks",
+    title: "Data Structures and Algorithm",
     img: 'images/Editor.jpg',
-    hreflink: '/books:editor-picks'
+    hreflink: '/books:dsa'
   },
   {
-    title: 'Most Popular',
+    title: 'Object Oriented Programming',
     img: 'images/most.jpg',
-    hreflink: '/books:most-popular'
+    hreflink: '/books:oop'
   },
   {
-    title: 'Academic & Education',
+    title: 'Database Management System',
     img: 'images/academic.jpg',
-    hreflink: '/books:Academic&Education'
+    hreflink: '/books:dbms'
   },
   {
-    title: 'Art',
+    title: 'Computer Networking',
     img: 'images/art.jpg',
-    hreflink: '/books:art'
+    hreflink: '/books:cn'
   },
   {
-    title: 'Biography',
+    title: 'Operating System',
     img: 'images/biography.jpg',
-    hreflink: '/books:biography'
+    hreflink: '/books:os'
   },
   {
-    title: 'Business & Career',
+    title: 'Machine Learning',
     img: 'images/business.jpg',
-    hreflink: '/books:Business&Career'
+    hreflink: '/books:ml'
   },
   {
-    title: 'Environment',
+    title: 'Artificial Intelligence',
     img: 'images/env.jpg',
-    hreflink: '/books:Environment'
+    hreflink: '/books:ai'
   },
   {
-    title: 'Health & Fitness',
+    title: 'Mechanics',
     img: 'images/health.jpg',
-    hreflink: '/books:Health&Fitness'
+    hreflink: '/books:mech'
   },
   {
-    title: 'Technology',
+    title: 'Electrical and Electronics',
     img: 'images/tech.jpg',
-    hreflink: '/books:Technology'
+    hreflink: '/books:elec'
   },
   {
-    title: 'Science & Research',
+    title: 'GATE Exam',
     img: 'images/science.jpg',
-    hreflink: '/books:Science&Research'
+    hreflink: '/books:gate'
   },
   {
-    title: 'Personal Growth',
+    title: 'GRE Exam',
     img: 'images/personal.jpg',
-    hreflink: '/books:personal-growth'
+    hreflink: '/books:gre'
   },
   {
-    title: 'Fiction & Literature',
+    title: 'Common Admission Test',
     img: 'images/fic.jpg',
-    hreflink: '/books:Fiction&Literature'
+    hreflink: '/books:cat'
+  },
+  {
+    title: 'Software Engineering',
+    img: 'images/fic.jpg',
+    hreflink: '/books:se'
+  },
+  {
+    title: 'Engineering Mathematics',
+    img: 'images/fic.jpg',
+    hreflink: '/books:em'
   }
 ]

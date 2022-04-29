@@ -26,7 +26,7 @@ app.use(express.static('public'))
 //app.use ends here;
 //get requests;
 var count = 1
-var bookStartIndex = 0
+// var bookStartIndex = 0
 app.get('/', (req, res) => {
   const { cookies } = req
   if (cookies.UserInfo)
@@ -73,84 +73,113 @@ app.get('/category', (req, res) => {
 app.get('/books:category', (req, res) => {
   const categorySelected = req.params['category'].replace(':', '')
   const { cookies } = req
-  BookInfo.find({
-    Category: categorySelected
-  })
-    .skip(bookStartIndex)
-    .limit(bookStartIndex + 60)
-    .then(data => {
-      bookStartIndex = bookStartIndex + 60
-      if (cookies.UserInfo)
-        res.render('books', {
-          Username: cookies.UserInfo,
-          Books: data,
-          Category: categorySelected
-        })
-      else
-        res.render('books', {
-          Username: null,
-          Books: data,
-          Category: categorySelected
-        })
-    })
+  if (categorySelected === 'general') {
+    newBookInfo
+      .find()
+      // .skip(bookStartIndex)
+      // .limit(bookStartIndex + 60)
+      .then(data => {
+        // bookStartIndex = bookStartIndex + 60
+        if (cookies.UserInfo)
+          res.render('books', {
+            Username: cookies.UserInfo,
+            Books: data,
+            Category: categorySelected
+          })
+        else
+          res.render('books', {
+            Username: null,
+            Books: data,
+            Category: categorySelected
+          })
+      })
+  } else {
+    newBookInfo
+      .find({
+        Category: categorySelected
+      })
+      // .skip(bookStartIndex)
+      // .limit(bookStartIndex + 60)
+      .then(data => {
+        // bookStartIndex = bookStartIndex + 60
+        if (cookies.UserInfo)
+          res.render('books', {
+            Username: cookies.UserInfo,
+            Books: data,
+            Category: categorySelected
+          })
+        else
+          res.render('books', {
+            Username: null,
+            Books: data,
+            Category: categorySelected
+          })
+      })
+  }
 })
 
 app.get('/book:ISBN', (req, res) => {
   const isbn = req.params['ISBN'].replace(':', '')
   const { cookies } = req
-  BookInfo.findOne({
-    ISBN: isbn
-  }).then(data => {
-    ReviewDB.find({
+  newBookInfo
+    .findOne({
       ISBN: isbn
-    }).then(review => {
-      if (review) {
-        if ('UserInfo' in cookies) {
-          res.render('book', {
-            Username: cookies.UserInfo,
-            Title: data.Title,
-            Author: data.Author,
-            Rating: review.Rating,
-            ISBN: data.ISBN,
-            Image: data.Image,
-            Reviews: review
-          })
-        } else {
-          res.render('book', {
-            Username: null,
-            Title: data.Title,
-            Author: data.Author,
-            Rating: review.Rating,
-            ISBN: data.ISBN,
-            Image: data.Image,
-            Reviews: review
-          })
-        }
-      } else {
-        if ('UserInfo' in cookies) {
-          res.render('book', {
-            Username: cookies.UserInfo,
-            Title: data.Title,
-            Author: data.Author,
-            Rating: review.Rating,
-            ISBN: data.ISBN,
-            Image: data.Image,
-            Reviews: null
-          })
-        } else {
-          res.render('book', {
-            Username: null,
-            Title: data.Title,
-            Author: data.Author,
-            Rating: review.Rating,
-            ISBN: review.ISBN,
-            Image: data.Image,
-            Reviews: null
-          })
-        }
-      }
     })
-  })
+    .then(data => {
+      ReviewDB.find({
+        ISBN: isbn
+      }).then(review => {
+        if (review) {
+          if ('UserInfo' in cookies) {
+            res.render('book', {
+              Username: cookies.UserInfo,
+              Title: data.Title,
+              Author: data.Author,
+              Rating: review.Rating,
+              ISBN: data.ISBN,
+              Image: data.Image,
+              Reviews: review,
+              Description: data.Description
+            })
+          } else {
+            res.render('book', {
+              Username: null,
+              Title: data.Title,
+              Author: data.Author,
+              Rating: review.Rating,
+              ISBN: data.ISBN,
+              Image: data.Image,
+              Reviews: review,
+              Description: data.Description
+            })
+          }
+        } else {
+          if ('UserInfo' in cookies) {
+            res.render('book', {
+              Username: cookies.UserInfo,
+              Title: data.Title,
+              Author: data.Author,
+              Rating: review.Rating,
+              ISBN: data.ISBN,
+              Image: data.Image,
+              Reviews: null,
+              Description: data.Description
+            })
+          } else {
+            res.render('book', {
+              Username: null,
+              Title: data.Title,
+              Author: data.Author,
+              Rating: review.Rating,
+              ISBN: review.ISBN,
+              Image: data.Image,
+              Reviews: null,
+              Description: data.Description
+            })
+          }
+        }
+      })
+    })
   // if ('UserInfo' in cookies) res.render('book', { Username: cookies.UserInfo })
   // else {
   //   res.render('book', { Username: null })
@@ -187,8 +216,9 @@ app.post('/search-result', (req, res) => {
   count = 1
   bookStartIndex = 0
   var keyword = req.body.keyword
-  BookInfo.find({ Title: { $regex: `.*${keyword}.*`, $options: 'i' } }).then(
-    data => {
+  newBookInfo
+    .find({ Title: { $regex: `.*${keyword}.*`, $options: 'i' } })
+    .then(data => {
       if (cookies.UserInfo)
         res.render('books', {
           Username: cookies.UserInfo,
@@ -201,8 +231,7 @@ app.post('/search-result', (req, res) => {
           Books: data,
           Category: null
         })
-    }
-  )
+    })
 })
 
 app.post('/logout', (req, res) => {
