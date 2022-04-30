@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>Categories</title>
 
     <!-- Google Fonts -->
@@ -126,7 +127,7 @@
                 <a class="nav-link" href="#pricing">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#cta">About</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
               <% if(Username){%>
               <li class="nav-item">
@@ -171,7 +172,7 @@
     categories.map((element) => {
       document.getElementById("main_container").innerHTML += `
       <div class="category_container">
-        <a class="card" style="width: 10rem" href=${element.hreflink}>
+        <a class="card" style="width:fit-content;" href=${element.hreflink}>
           <img src=${element.img} class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">${element.title}</h5>

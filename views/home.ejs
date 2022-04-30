@@ -225,33 +225,29 @@
       <div id="testimonial-carousel" class="carousel slide" data-ride="false">
         <div class="carousel-inner">
           <div class="carousel-item active container-fluid">
-            <h2 class="testimonial-text">
-              The Power of Now shows you that every minute you spend worrying
-              about the future or regretting the past is a minute lost, and
-              gives you actionable strategies to start living every minute as it
-              occurs.
-            </h2>
+            <p style="color: white" class="testimonial-text">
+              <%=Books[0][0].Description.substring(0, 500)%>....
+            </p>
             <img
               class="testimonial-image"
-              src="images/thepowerofnow.jpg"
-              alt="dog-profile"
+              src="<%=Books[0][0].Image%>"
+              alt="Image not found!"
             />
-            <em>The Power of Now: A Guide to Spiritual Enlightenment</em>
+            <em><%=Books[0][0].Title%></em>
           </div>
+          <% for(var i=1; i< 4 ; i++) { %>
           <div class="carousel-item container-fluid">
             <h2 class="testimonial-text">
-              The Monk Who Sold His Ferrari is a self-help classic telling the
-              story of fictional lawyer Julian Mantle, who sold his mansion and
-              Ferrari to study the seven virtues of the Sages of Sivana in the
-              Himalayan mountains.
+              <%=Books[0][i].Description.substring(0, 500)%>....%>
             </h2>
             <img
               class="testimonial-image"
-              src="images/themonkwhosoldhisferrari.jpg"
-              alt="lady-profile"
+              src="<%=Books[0][i].Image%>"
+              alt="Image not found!"
             />
-            <em>The Monk Who Sold His Ferrari</em>
+            <em><%=Books[0][i].Title%></em>
           </div>
+          <% } %>
         </div>
         <a
           class="carousel-control-prev"
@@ -276,163 +272,29 @@
 
     <section class="white-section" id="pricing">
       <h2 class="section-heading">Top Books</h2>
-      <p>Simple and affordable price plans for your Life.</p>
-
+      <p>Best books recommendations for your Engineering journey.</p>
       <br />
-      <div class="row-head"><h2>Literature Books</h2></div>
       <div class="row">
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/EnglishAdvancedVocabularyandStructurePractice.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                English Advanced Vocabulary and Structure Practice
-              </h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
+        <% for(var i=5; i<Books[0].length; i++) { %>
+          <div class="pricing-column col-lg-3 col-md-6" style="justify-content: center;align-items: center;">
+            <a href="/book:<%=Books[0][i].ISBN%>" class="card mycard" style="width: 18rem">
+              <img
+                src="<%=Books[0][i].Image%>"
+                class="card-img-top"
+                alt="..."
+                style="padding:1vh 1vw;margin:1vh 1vw;"
+              />
+              <div class="card-body">
+                <h5 class="card-title"><%=Books[0][i].Title%></h5>
+                <p class="card-text">
+                  <%=Books[0][i].Description.substring(0, 100)%>...
+                </p>
+              </div>
+            </a>
           </div>
-        </div>
-
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/AdvancedEnglishPhrasalVerbsinUse.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Advanced English Phrasal Verbs in Use</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/HowtoWriteBetterEssays.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">How to Write Better Essays in English</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/HowtoWriteEffectiveBusinessEnglish.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                How to Write Effective Business English
-              </h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
-          </div>
-        </div>
+      <% } %>
       </div>
-
       <br />
-      <div class="row-head"><h2>Law Books</h2></div>
-      <div class="row">
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/LearningtoThinkLikeaLawyer.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Think Like a Lawyer</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/IntroductiontoLaw.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Introduction to Law</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/PoliticalScience.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Political Science</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-column col-lg-3 col-md-6">
-          <div class="card" style="width: 18rem">
-            <img
-              src="images/PoliticalPhilosophy.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Political Philosophy</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Get this Book</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Call to Action -->

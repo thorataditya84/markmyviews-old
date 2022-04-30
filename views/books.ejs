@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <% if(Category){%>
     <title><%=Category.toUpperCase()%></title>
     <%}else{%>
@@ -131,7 +132,7 @@
                 <a class="nav-link" href="#pricing">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#cta">About</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
               <% if(Username){%>
               <li class="nav-item">
@@ -182,7 +183,13 @@
         <% Books.forEach(Book => {%>
         <a
           href="/book:<%=Book.ISBN%>"
-          style="text-decoration: none; text-emphasis: none; color: black"
+          style="
+            text-decoration: none;
+            text-emphasis: none;
+            color: black;
+            min-width: 30vw;
+            max-width: 30vw;
+          "
         >
           <div class="card" style="width: inherit">
             <img
@@ -191,7 +198,7 @@
               alt="Image not found!"
             />
             <div class="card-body">
-              <h5 class="card-title"><%=Book.Title%></h5>
+              <h5 class="card-title"><%=Book.Title.substring(0,80)%>...</h5>
               <p class="card-text">ISBN- <%=Book.ISBN%></p>
               <p class="card-text">Rating- <%=Book.Rating%></p>
               <p class="card-text">Author- <%=Book.Author%></p>

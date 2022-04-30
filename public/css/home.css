@@ -152,7 +152,7 @@ p {
 }
 
 .testimonial-text {
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.5;
 }
 
@@ -164,7 +164,11 @@ p {
 .carousel-item em {
   font-size: 1.5rem;
 }
-
+.carousel {
+  position: relative;
+  max-height: fit-content;
+  min-height: 50vh;
+}
 #press {
   background-color: #ef8172;
   padding-bottom: 3%;
@@ -198,6 +202,9 @@ p {
 
 .pricing-column {
   padding: 3% 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* CTA Section */
@@ -495,3 +502,15 @@ p {
   cursor: pointer;
 }
 /* alert div css ends here */
+.mycard{
+  min-height: 50vh;
+  max-height: fit-content;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color:black;
+}
+a:link, a:visited,  a:hover, a:active{
+  text-decoration: none;
+  text-emphasis: none;
+}

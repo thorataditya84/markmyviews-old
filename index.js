@@ -29,17 +29,25 @@ var count = 1
 // var bookStartIndex = 0
 app.get('/', (req, res) => {
   const { cookies } = req
-  if (cookies.UserInfo)
-    res.render('home', {
-      Username: cookies.UserInfo,
-      message: `Welcome ${cookies.UserInfo}!`,
-      count: count++
-    })
-  else
-    res.render('home', {
-      Username: null,
-      message: 'Please login or signup !',
-      count: count++
+  newBookInfo
+    .find()
+    .sort({ Rating: -1 })
+    .limit(13)
+    .then(data => {
+      if (cookies.UserInfo)
+        res.render('home', {
+          Username: cookies.UserInfo,
+          message: `Welcome ${cookies.UserInfo}!`,
+          count: count++,
+          Books: [data]
+        })
+      else
+        res.render('home', {
+          Username: null,
+          message: 'Please login or signup !',
+          Books: [data],
+          count: count++
+        })
     })
 })
 
@@ -76,6 +84,7 @@ app.get('/books:category', (req, res) => {
   if (categorySelected === 'general') {
     newBookInfo
       .find()
+      .sort({ Rating: -1 })
       // .skip(bookStartIndex)
       // .limit(bookStartIndex + 60)
       .then(data => {
@@ -98,6 +107,7 @@ app.get('/books:category', (req, res) => {
       .find({
         Category: categorySelected
       })
+      .sort({ Rating: -1 })
       // .skip(bookStartIndex)
       // .limit(bookStartIndex + 60)
       .then(data => {
@@ -135,7 +145,7 @@ app.get('/book:ISBN', (req, res) => {
               Username: cookies.UserInfo,
               Title: data.Title,
               Author: data.Author,
-              Rating: review.Rating,
+              Rating: data.Rating,
               ISBN: data.ISBN,
               Image: data.Image,
               Reviews: review,
@@ -146,7 +156,7 @@ app.get('/book:ISBN', (req, res) => {
               Username: null,
               Title: data.Title,
               Author: data.Author,
-              Rating: review.Rating,
+              Rating: data.Rating,
               ISBN: data.ISBN,
               Image: data.Image,
               Reviews: review,
@@ -159,7 +169,7 @@ app.get('/book:ISBN', (req, res) => {
               Username: cookies.UserInfo,
               Title: data.Title,
               Author: data.Author,
-              Rating: review.Rating,
+              Rating: data.Rating,
               ISBN: data.ISBN,
               Image: data.Image,
               Reviews: null,
@@ -170,7 +180,7 @@ app.get('/book:ISBN', (req, res) => {
               Username: null,
               Title: data.Title,
               Author: data.Author,
-              Rating: review.Rating,
+              Rating: data.Rating,
               ISBN: review.ISBN,
               Image: data.Image,
               Reviews: null,
@@ -218,6 +228,7 @@ app.post('/search-result', (req, res) => {
   var keyword = req.body.keyword
   newBookInfo
     .find({ Title: { $regex: `.*${keyword}.*`, $options: 'i' } })
+    .sort({ Rating: -1 })
     .then(data => {
       if (cookies.UserInfo)
         res.render('books', {
@@ -287,9 +298,9 @@ app.post('/login', (req, res) => {
             res.clearCookie('UserInfo')
             res.cookie('UserInfo', [User.Username])
             count = 1
-            res.redirect('/')
+            res.render('/')
           } else {
-            res.redirect('/')
+            res.render('/')
           }
         })
       }

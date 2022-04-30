@@ -1,72 +1,72 @@
 const categories = [
   {
     title: "Data Structures and Algorithm",
-    img: 'images/Editor.jpg',
+    img: 'images/dsa.png',
     hreflink: '/books:dsa'
   },
   {
     title: 'Object Oriented Programming',
-    img: 'images/most.jpg',
+    img: 'images/oop.png',
     hreflink: '/books:oop'
   },
   {
     title: 'Database Management System',
-    img: 'images/academic.jpg',
+    img: 'images/dbms.png',
     hreflink: '/books:dbms'
   },
   {
     title: 'Computer Networking',
-    img: 'images/art.jpg',
+    img: 'images/cn.jpg',
     hreflink: '/books:cn'
   },
   {
     title: 'Operating System',
-    img: 'images/biography.jpg',
+    img: 'images/os.jpg',
     hreflink: '/books:os'
   },
   {
     title: 'Machine Learning',
-    img: 'images/business.jpg',
+    img: 'images/ml.jpg',
     hreflink: '/books:ml'
   },
   {
     title: 'Artificial Intelligence',
-    img: 'images/env.jpg',
+    img: 'images/ai.jpg',
     hreflink: '/books:ai'
   },
   {
     title: 'Mechanics',
-    img: 'images/health.jpg',
+    img: 'images/mech.png',
     hreflink: '/books:mech'
   },
   {
     title: 'Electrical and Electronics',
-    img: 'images/tech.jpg',
+    img: 'images/elec.png',
     hreflink: '/books:elec'
   },
   {
     title: 'GATE Exam',
-    img: 'images/science.jpg',
+    img: 'images/gate.png',
     hreflink: '/books:gate'
   },
   {
     title: 'GRE Exam',
-    img: 'images/personal.jpg',
+    img: 'images/gre.jpg',
     hreflink: '/books:gre'
   },
   {
     title: 'Common Admission Test',
-    img: 'images/fic.jpg',
+    img: 'images/cat.webp',
     hreflink: '/books:cat'
   },
   {
     title: 'Software Engineering',
-    img: 'images/fic.jpg',
+    img: 'images/se.png',
     hreflink: '/books:se'
   },
   {
     title: 'Engineering Mathematics',
-    img: 'images/fic.jpg',
+    img: 'images/em.jpg',
     hreflink: '/books:em'
   }
 ]
