@@ -51,7 +51,9 @@
 } */
 
 /* search bar css */
-
+a:focus,a,a:hover,a:checked{
+  color:black;
+}
 .search {
   width: 100%;
   position: relative;
@@ -93,5 +95,7 @@
   margin: 1vh auto;
   padding: 1vh 1vw;
 }
+#pricing {
+  padding: 1vh 1vw;
+}
 /* search bar css ends here */
-

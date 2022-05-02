@@ -298,16 +298,17 @@ app.post('/login', (req, res) => {
             res.clearCookie('UserInfo')
             res.cookie('UserInfo', [User.Username])
             count = 1
-            res.render('/')
+            res.redirect('/')
           } else {
-            res.render('/')
+            res.redirect('/')
           }
         })
       }
     }
   )
 })
-app.post('/review:ISBN', (req, res) => {
+
+app.post('/review:ISBN', async (req, res) => {
   const { cookies } = req
   const ISBN = req.params['ISBN'].replace(':', '')
   const Username = cookies.UserInfo[0]
@@ -319,7 +320,18 @@ app.post('/review:ISBN', (req, res) => {
     Rating: Rating,
     Review: Review
   })
-  newReview.save().then(data => res.redirect(`/book:${ISBN}`))
+  var newRating = 0
+  try {
+    await newBookInfo.findOne({ ISBN: ISBN }).then(data => {
+      newRating = (+data.Rating + +Rating) / 2
+    })
+    await newBookInfo.updateOne({ ISBN: ISBN }, { $set: { Rating: newRating } })
+    await newReview.save().then(data => {
+      res.redirect(`/book:${ISBN}`)
+    })
+  } catch (err) {
+    console.log(err)
+  }
 })
 //post request to upload any book;
 // app.post('/justdoit', (req, res) => {

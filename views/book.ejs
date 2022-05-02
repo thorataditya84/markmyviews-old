@@ -71,7 +71,7 @@
     <div class="container-fluid">
       <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="">Book Forest</a>
+        <a class="navbar-brand" href="">MarkmyViews</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
           <span class="navbar-toggler-icon"></span>
@@ -89,7 +89,7 @@
               <a class="nav-link" href="/books:general">Books</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#pricing">Contact</a>
+              <a class="nav-link" href="#footer">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
@@ -147,7 +147,7 @@
             <h5>Reviews and Ratings</h5>
             <% if(Reviews){%>
               <% Reviews.forEach(Review => {%>
-            <div class="card mycard">
+            <div class="card mycard_body">
               <div class="card-body">
                 <h5 class="card-title"><%=Review.Username%></h5>
                 <h6 class="card-subtitle mb-2 text-muted">
@@ -180,7 +180,7 @@
             </div>
           </form>
           <%}else{%>
-          <div class="card mycard">
+          <div class="card mycard" style="width:100%;height: fit-content !important;">
             <div class="card-body">
               <h5 class="card-title">Login or SignUp to Review</h5>
               <p>Help grow the community by suggesting better choices:)</p>
@@ -201,7 +201,7 @@
         <i class="social-icon fab fa-twitter"></i>
         <i class="social-icon fab fa-instagram"></i>
         <i class="social-icon fas fa-envelope"></i>
-        <p>&copy; Copyright 2022 Book Forest</p>
+        <p>&copy; Copyright 2022.MarkmyViews</p>
       </div>
     </footer>
   </body>
