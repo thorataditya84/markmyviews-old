@@ -31,7 +31,13 @@ h6 {
 p {
   color: #8f8f8f;
 }
-
+a,
+a:active,
+a:focus,
+a:checked,a:hover {
+  text-decoration: none;
+  color:black;
+}
 /* Headings */
 
 .big-heading {
@@ -502,15 +508,18 @@ p {
   cursor: pointer;
 }
 /* alert div css ends here */
-.mycard{
+.mycard {
   min-height: 50vh;
   max-height: fit-content;
   justify-content: center;
   align-items: center;
   border: none;
-  color:black;
+  color: black;
 }
-a:link, a:visited,  a:hover, a:active{
+a:link,
+a:visited,
+a:hover,
+a:active {
   text-decoration: none;
   text-emphasis: none;
 }

@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title><%=Title%></title>
 
   <!-- Google Fonts -->
@@ -119,8 +120,8 @@
     <!-- Page content -->
     <section>
       <div class="container-fluid mycontainer">
-        <div class="bookImage">
-          <img style="max-width: 30vw;max-height:60vh;" src="<%=Image%>" alt="Image not found!" />
+        <div class="bookImage" style="background-image: url(<%=Image%>);background-repeat: no-repeat;background-position: center;background-size:contain;">
+          <!-- <img style="max-width: 30vw;max-height:60vh;" src="<%=Image%>" alt="Image not found!" /> -->
         </div>
         <div class="scrollableDiv">
           <h5 style="text-align: center"><%=Title%></h5>

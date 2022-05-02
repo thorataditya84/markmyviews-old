@@ -176,37 +176,34 @@
       </form>
     </section>
     <!-- This section is for searching the books -->
-    <section>
       <!-- end of searching book section -->
-      <h5 class="section-heading">Books</h5>
-      <div id="main_container">
-        <% Books.forEach(Book => {%>
-        <a
-          href="/book:<%=Book.ISBN%>"
-          style="
-            text-decoration: none;
-            text-emphasis: none;
-            color: black;
-            min-width: 30vw;
-            max-width: 30vw;
-          "
-        >
-          <div class="card" style="width: inherit">
-            <img
-              src="<%= Book.Image %>"
-              class="card-img-top cover"
-              alt="Image not found!"
-            />
-            <div class="card-body">
-              <h5 class="card-title"><%=Book.Title.substring(0,80)%>...</h5>
-              <p class="card-text">ISBN- <%=Book.ISBN%></p>
-              <p class="card-text">Rating- <%=Book.Rating%></p>
-              <p class="card-text">Author- <%=Book.Author%></p>
+      <section class="white-section" id="pricing">
+        <h2 class="section-heading">Books</h2>
+        <div class="row" style="justify-content: center;align-items: center;text-align: center;">
+          <% for(var i=0; i<Books.length; i++) { %>
+            <div class="pricing-column col-lg-3 col-md-6" style="justify-content: center;align-items: center;padding:1vh 1vw !important;">
+              <a href="/book:<%=Books[i].ISBN%>" class="card mycard" style="width: 18rem">
+                <img
+                  src="<%=Books[i].Image%>"
+                  class="card-img-top"
+                  alt="..."
+                  style="padding:1vh 1vw;margin:1vh 1vw;width:240px;height:300px;"
+                />
+                <div class="card-body">
+                  <h5 class="card-title"><%=Books[i].Title%></h5>
+                  <p class="card-text">
+                    Author-<%=Books[i].Author%>
+                  </p>
+                  <p class="card-text">
+                    Rating-<%=Books[i].Rating%>
+                  </p>
+                </div>
+              </a>
             </div>
-          </div>
-        </a>
-        <%}) %>
-      </div>
+        <% } %>
+        </div>
+        <br />
+      </section>
       <form action="/books:<%=Category%>" method="get">
         <button
           style="
@@ -223,7 +220,6 @@
         </button>
       </form>
       <!-- content of the books page ends here -->
-    </section>
     <!-- Footer -->
     <footer class="white-section" id="footer">
       <div class="container-fluid">
