@@ -275,15 +275,15 @@
       <h2 class="section-heading">Top Books</h2>
       <p>Best books recommendations for your Engineering journey.</p>
       <br />
-      <div class="row">
+      <div class="row" style="justify-content: baseline !important;">
         <% for(var i=5; i<Books[0].length; i++) { %>
-          <div class="pricing-column col-lg-3 col-md-6" style="justify-content: center;align-items: center;">
+          <div class="pricing-column col-lg-3 col-md-6" style="justify-content: baseline;align-items: center;">
             <a href="/book:<%=Books[0][i].ISBN%>" class="card mycard" style="width: 18rem">
               <img
                 src="<%=Books[0][i].Image%>"
                 class="card-img-top"
                 alt="..."
-                style="padding:1vh 1vw;margin:1vh 1vw;"
+                style="padding:1vh 1vw;margin:1vh 1vw;width: 240px;height: 300px;"
               />
               <div class="card-body">
                 <h5 class="card-title"><%=Books[0][i].Title%></h5>

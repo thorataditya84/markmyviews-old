@@ -59,8 +59,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.card-body{
-  width:100%;
+.card-body {
+  width: 100%;
 }
 .ratings {
   width: inherit;
@@ -91,19 +91,22 @@
   display: flex;
   width: inherit;
 }
-@media screen and (max-width:740px) {
+@media screen and (max-width: 740px) {
   .mycontainer {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .bookImage 
-  {
+  .bookImage {
     height: 40vh;
     width: 90vw;
-    padding:1vh 1vw;
-    margin:1vh 1vw;
+    padding: 1vh 1vw;
+    margin: 1vh 1vw;
   }
-
+}
+.textarea {
+  overflow: auto;
+  resize: vertical;
+  width: 100%;
 }
