@@ -51,6 +51,7 @@
     <script src="js/books.js"></script>
   </head>
   <body>
+    <div id="loading">Loading&#8230;</div>
     <div id="login_container">
       <div class="container_login">
         <div class="screen">
@@ -136,7 +137,7 @@
               </li>
               <% if(Username){%>
               <li class="nav-item">
-                <div class="efecto"></div>
+                <div class="efecto" style="background-image:url(https://ui-avatars.com/api/?uppercase=true&name=<%=Username%>&background=random&color=fff&rounded=true) !important;"></div>
               </li>
               <li class="nav-item">
                 <a class="nav-link">
@@ -179,18 +180,18 @@
       <!-- end of searching book section -->
       <section class="white-section" id="pricing">
         <h2 class="section-heading">Books</h2>
-        <div class="row" style="justify-content: center;align-items: center;text-align: center;">
+        <div class="row" style="justify-content: center;align-items: center;text-align: center;align-items: baseline;">
           <% for(var i=0; i<Books.length; i++) { %>
             <div class="pricing-column col-lg-3 col-md-6" style="justify-content: center;align-items: center;padding:1vh 1vw !important;">
-              <a href="/book:<%=Books[i].ISBN%>" class="card mycard" style="width: 18rem">
+              <a href="/book:<%=Books[i].ISBN%>" class="card mycard" style="width:inherit;">
                 <img
                   src="<%=Books[i].Image%>"
                   class="card-img-top"
                   alt="..."
                   style="padding:1vh 1vw;margin:1vh 1vw;width:240px;height:300px;"
                 />
-                <div class="card-body">
-                  <h5 class="card-title"><%=Books[i].Title%></h5>
+                <div class="card-body" style="width: inherit;">
+                  <h5 class="card-title"><%=Books[i].Title.substring(0,50)%>...</h5>
                   <p class="card-text">
                     Author-<%=Books[i].Author%>
                   </p>
