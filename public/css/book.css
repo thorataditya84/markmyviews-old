@@ -105,7 +105,7 @@
     margin: 1vh 1vw;
   }
 }
-.textarea {
+textarea {
   overflow: auto;
   resize: vertical;
   width: 100%;
