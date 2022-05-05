@@ -27,7 +27,7 @@ var ReviewSchema = new Schema({
   },
   Review: {
     type: String,
-    required: true
+    required: false
   }
 })
 

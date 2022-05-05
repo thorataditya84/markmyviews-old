@@ -290,8 +290,18 @@ app.post('/login', (req, res) => {
     function (err, User) {
       if (err) return handleError(err)
       if (!User) {
-        res.redirect('/')
-        console.log('User not found!')
+        newBookInfo
+          .find()
+          .sort({ Rating: -1 })
+          .limit(13)
+          .then(data => {
+            res.render('home', {
+              message: 'User not found!',
+              Username: null,
+              Books: [data],
+              count: 1
+            })
+          })
       } else {
         bcrypt.compare(Password, User.Password, function (err, response) {
           if (response) {
