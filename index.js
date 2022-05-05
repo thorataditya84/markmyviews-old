@@ -202,12 +202,15 @@ app.get('/upload', (req, res) => {
 //post requests;
 
 app.post('/upload', (req, res) => {
+  var rating = +req.body.rating
+  if (rating > 5) rating = 5
+  if (rating < 1) rating = 1
   const newBook = new newBookInfo({
     Title: req.body.title,
     ISBN: req.body.ISBN,
     Image: req.body.url,
     Author: req.body.author,
-    Rating: req.body.rating,
+    Rating: rating,
     Category: req.body.category,
     Description: req.body.desc
   })
@@ -331,9 +334,11 @@ app.post('/review:ISBN', async (req, res) => {
     Review: Review
   })
   var newRating = 0
+  var countReviews = 1
+  countReviews += await ReviewDB.find({ ISBN: ISBN }).count()
   try {
     await newBookInfo.findOne({ ISBN: ISBN }).then(data => {
-      newRating = (+data.Rating + +Rating) / 2
+      newRating = ((+data.Rating) * countReviews + (+Rating)) / (countReviews + 1)
     })
     await newBookInfo.updateOne({ ISBN: ISBN }, { $set: { Rating: newRating } })
     await newReview.save().then(data => {
