@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title><%=Title%></title>
 
   <!-- Google Fonts -->
@@ -29,10 +30,11 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
   <script src="js/home.js"></script>
-  <script src="js/book.js"></script>
+  <!-- <script src="js/book.js"></script> -->
 </head>
 
 <body>
+  <div id="loading">Loading&#8230;</div>
   <div id="login_container">
     <div class="container_login">
       <div class="screen">
@@ -41,11 +43,11 @@
           <form class="login__" action="/login" method="post">
             <div class="login__field">
               <i class="login__icon fas fa-user"></i>
-              <input type="text" class="login__input" placeholder="Username" name="Username" />
+              <input type="text" class="login__input" placeholder="Username" name="Username" required/>
             </div>
             <div class="login__field">
               <i class="login__icon fas fa-lock"></i>
-              <input type="password" class="login__input" placeholder="Password" name="Password" />
+              <input type="password" class="login__input" placeholder="Password" name="Password" required/>
             </div>
             <button class="button login__submit" type="submit">
               <span class="button__text">Log In Now</span>
@@ -70,7 +72,7 @@
     <div class="container-fluid">
       <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="">Book Forest</a>
+        <a class="navbar-brand" href="">MarkmyViews</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
           <span class="navbar-toggler-icon"></span>
@@ -88,14 +90,14 @@
               <a class="nav-link" href="/books:general">Books</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#pricing">Contact</a>
+              <a class="nav-link" href="#footer">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#cta">About</a>
+              <a class="nav-link" href="/about">About</a>
             </li>
             <% if(Username){%>
             <li class="nav-item">
-              <div class="efecto"></div>
+              <div class="efecto" style="background-image:url(https://ui-avatars.com/api/?uppercase=true&name=<%=Username%>&background=random&color=fff&rounded=true) !important;"></div>
             </li>
             <li class="nav-item">
               <a class="nav-link">
@@ -119,8 +121,8 @@
     <!-- Page content -->
     <section>
       <div class="container-fluid mycontainer">
-        <div class="bookImage">
-          <img src="<%=Image%>" alt="Image not found!" />
+        <div class="bookImage" style="background-image: url(<%=Image%>);background-repeat: no-repeat;background-position: center;background-size:contain;">
+          <!-- <img style="max-width: 30vw;max-height:60vh;" src="<%=Image%>" alt="Image not found!" /> -->
         </div>
         <div class="scrollableDiv">
           <h5 style="text-align: center"><%=Title%></h5>
@@ -140,16 +142,13 @@
           </h5>
           <h5>Description</h5>
           <div style="margin: 1vh 1vw; padding: 1vh 1vw; text-align: initial">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit quae
-            at maxime iusto fugiat id quam ducimus odit iste et nihil beatae
-            minima dignissimos ipsum deserunt consequuntur, praesentium impedit
-            amet.
+            <%=Description%>
           </div>
           <div class="ratings">
             <h5>Reviews and Ratings</h5>
             <% if(Reviews){%>
               <% Reviews.forEach(Review => {%>
-            <div class="card mycard">
+            <div class="card mycard_body">
               <div class="card-body">
                 <h5 class="card-title"><%=Review.Username%></h5>
                 <h6 class="card-subtitle mb-2 text-muted">
@@ -170,8 +169,8 @@
           <form action="/review:<%=ISBN%>" class="myform" method="post">
             <div class="UserRR">
               <h5>Rate and Review the book for others to decide</h5>
-              <div class="UserRating">
-                <input type="number" style="width: 40px; height: 40px" name="Rating"/> Stars
+              <div class="UserRating" style="padding:2vh 1vw;">
+                <input type="number" step="0.1" min="1" max="5" value="5" style="width: 40px; height: 40px" name="Rating"/> Stars
                 of 5
               </div>
               <div class="UserReview">
@@ -182,7 +181,7 @@
             </div>
           </form>
           <%}else{%>
-          <div class="card mycard">
+          <div class="card mycard" style="width:100%;height: fit-content !important;">
             <div class="card-body">
               <h5 class="card-title">Login or SignUp to Review</h5>
               <p>Help grow the community by suggesting better choices:)</p>
@@ -196,14 +195,14 @@
         </div>
       </div>
     </section>
-    <!-- Footer -->
+    <!-- Footer section -->
     <footer class="white-section" id="footer">
       <div class="container-fluid">
         <i class="social-icon fab fa-facebook-f"></i>
         <i class="social-icon fab fa-twitter"></i>
         <i class="social-icon fab fa-instagram"></i>
         <i class="social-icon fas fa-envelope"></i>
-        <p>&copy; Copyright 2022 Book Forest</p>
+        <p>&copy; Copyright 2022.MarkmyViews</p>
       </div>
     </footer>
   </body>

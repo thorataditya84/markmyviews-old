@@ -15,8 +15,8 @@
 }
 .bookImage {
   width: 100%;
-  height: 80vh;
-  border: 2px solid rgb(224, 224, 224);
+  height: 60vh;
+  /* border: 2px solid rgb(224, 224, 224); */
   justify-content: center;
   align-items: center;
   display: flex;
@@ -59,10 +59,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.card-body {
+  width: 100%;
+}
 .ratings {
   width: inherit;
 }
-.mycard {
+.mycard_body {
   margin: 1vh 1vw;
   padding: 1vh 1vw;
 }
@@ -87,4 +90,23 @@
   align-items: center;
   display: flex;
   width: inherit;
+}
+@media screen and (max-width: 740px) {
+  .mycontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .bookImage {
+    height: 40vh;
+    width: 90vw;
+    padding: 1vh 1vw;
+    margin: 1vh 1vw;
+  }
+}
+textarea {
+  overflow: auto;
+  resize: vertical;
+  width: 100%;
 }

@@ -1,62 +1,72 @@
 const categories = [
   {
-    title: "Editor's Picks",
-    img: 'images/Editor.jpg',
-    hreflink: '/books:editor-picks'
+    title: "Data Structures and Algorithm",
+    img: 'images/dsa.png',
+    hreflink: '/books:dsa'
   },
   {
-    title: 'Most Popular',
-    img: 'images/most.jpg',
-    hreflink: '/books:most-popular'
+    title: 'Object Oriented Programming',
+    img: 'images/oop.png',
+    hreflink: '/books:oop'
   },
   {
-    title: 'Academic & Education',
-    img: 'images/academic.jpg',
-    hreflink: '/books:Academic&Education'
+    title: 'Database Management System',
+    img: 'images/dbms.png',
+    hreflink: '/books:dbms'
   },
   {
-    title: 'Art',
-    img: 'images/art.jpg',
-    hreflink: '/books:art'
+    title: 'Computer Networking',
+    img: 'images/cn.jpg',
+    hreflink: '/books:cn'
   },
   {
-    title: 'Biography',
-    img: 'images/biography.jpg',
-    hreflink: '/books:biography'
+    title: 'Operating System',
+    img: 'images/os.jpg',
+    hreflink: '/books:os'
   },
   {
-    title: 'Business & Career',
-    img: 'images/business.jpg',
-    hreflink: '/books:Business&Career'
+    title: 'Machine Learning',
+    img: 'images/ml.jpg',
+    hreflink: '/books:ml'
   },
   {
-    title: 'Environment',
-    img: 'images/env.jpg',
-    hreflink: '/books:Environment'
+    title: 'Artificial Intelligence',
+    img: 'images/ai.jpg',
+    hreflink: '/books:ai'
   },
   {
-    title: 'Health & Fitness',
-    img: 'images/health.jpg',
-    hreflink: '/books:Health&Fitness'
+    title: 'Mechanics',
+    img: 'images/mech.png',
+    hreflink: '/books:mech'
   },
   {
-    title: 'Technology',
-    img: 'images/tech.jpg',
-    hreflink: '/books:Technology'
+    title: 'Electrical and Electronics',
+    img: 'images/elec.png',
+    hreflink: '/books:elec'
   },
   {
-    title: 'Science & Research',
-    img: 'images/science.jpg',
-    hreflink: '/books:Science&Research'
+    title: 'GATE Exam',
+    img: 'images/gate.png',
+    hreflink: '/books:gate'
   },
   {
-    title: 'Personal Growth',
-    img: 'images/personal.jpg',
-    hreflink: '/books:personal-growth'
+    title: 'GRE Exam',
+    img: 'images/gre.jpg',
+    hreflink: '/books:gre'
   },
   {
-    title: 'Fiction & Literature',
-    img: 'images/fic.jpg',
-    hreflink: '/books:Fiction&Literature'
+    title: 'Common Admission Test',
+    img: 'images/cat.webp',
+    hreflink: '/books:cat'
+  },
+  {
+    title: 'Software Engineering',
+    img: 'images/se.png',
+    hreflink: '/books:se'
+  },
+  {
+    title: 'Engineering Mathematics',
+    img: 'images/em.jpg',
+    hreflink: '/books:em'
   }
 ]

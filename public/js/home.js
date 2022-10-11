@@ -16,6 +16,7 @@ function closeButtonHandler (event) {
                   class="login__input"
                   placeholder="Username"
                   name="Username"
+                  required
                 />
               </div>
               <div class="login__field">
@@ -25,6 +26,7 @@ function closeButtonHandler (event) {
                   class="login__input"
                   placeholder="Password"
                   name="Password"
+                  required
                 />
               </div>
               <button class="button login__submit" type="submit">
@@ -63,15 +65,15 @@ function signUpHandler (event) {
       <form class="login__" style="padding-top:70px;" method="post" action="/signUp">
         <div class="login__field">
           <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="Full Name" name="FullName" />
+          <input type="text" class="login__input" placeholder="Full Name" name="FullName" required/>
         </div>
         <div class="login__field">
-          <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="Email" name="Email" />
+          <i class="login__icon fa-solid fa-at"></i>
+          <input type="text" class="login__input" placeholder="Email" name="Email" required/>
         </div>
         <div class="login__field">
-          <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="Create Username" name="Username"/>
+        <i class="login__icon fa-solid fa-user-tag"></i>
+          <input type="text" class="login__input" placeholder="Create Username" name="Username" required/>
         </div>
         <div class="login__field">
           <i class="login__icon fas fa-lock"></i>
@@ -80,6 +82,7 @@ function signUpHandler (event) {
             class="login__input"
             placeholder="Create Password"
             name="Password"
+            required
           />
         </div>
         <button class="button login__submit">
@@ -102,3 +105,20 @@ function signUpHandler (event) {
 //validations for login page;
 
 //validations for SignUp page;
+//loader javascript;
+function onReady (callback) {
+  var intervalId = window.setInterval(function () {
+    if (document.getElementsByTagName('body')[0] !== undefined) {
+      window.clearInterval(intervalId)
+      callback.call(this)
+    }
+  }, 1000)
+}
+
+function setVisible (selector, visible) {
+  document.querySelector(selector).style.display = visible ? 'block' : 'none'
+}
+
+onReady(function () {
+  setVisible('#loading', false)
+})

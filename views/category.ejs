@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>Categories</title>
 
     <!-- Google Fonts -->
@@ -47,6 +48,7 @@
     <script src="js/category.js"></script>
   </head>
   <body>
+    <div id="loading">Loading&#8230;</div>
     <div id="login_container">
       <div class="container_login">
         <div class="screen">
@@ -59,6 +61,7 @@
                   type="text"
                   class="login__input"
                   placeholder="Username"
+                  required
                 />
               </div>
               <div class="login__field">
@@ -67,6 +70,7 @@
                   type="password"
                   class="login__input"
                   placeholder="Password"
+                  required
                 />
               </div>
               <button class="button login__submit">
@@ -100,7 +104,7 @@
       <div class="container-fluid">
         <!-- Nav Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" href="">Book Forest</a>
+          <a class="navbar-brand" href="">MarkmyViews</a>
 
           <button
             class="navbar-toggler"
@@ -123,14 +127,14 @@
                 <a class="nav-link" href="/books:general">Books</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#pricing">Contact</a>
+                <a class="nav-link" href="#footer">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#cta">About</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
               <% if(Username){%>
               <li class="nav-item">
-                <div class="efecto"></div>
+                <div class="efecto" style="background-image:url(https://ui-avatars.com/api/?uppercase=true&name=<%=Username%>&background=random&color=fff&rounded=true) !important;"></div>
               </li>
               <li class="nav-item">
                 <a class="nav-link">
@@ -162,7 +166,7 @@
         <i class="social-icon fab fa-twitter"></i>
         <i class="social-icon fab fa-instagram"></i>
         <i class="social-icon fas fa-envelope"></i>
-        <p>&copy; Copyright 2022 Book Forest</p>
+        <p>&copy; Copyright 2022.MarkmyViews</p>
       </div>
     </footer>
   </body>
@@ -171,7 +175,7 @@
     categories.map((element) => {
       document.getElementById("main_container").innerHTML += `
       <div class="category_container">
-        <a class="card" style="width: 10rem" href=${element.hreflink}>
+        <a class="card" style="width:fit-content;" href=${element.hreflink}>
           <img src=${element.img} class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title">${element.title}</h5>

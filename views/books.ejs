@@ -2,8 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <% if(Category){%>
     <title><%=Category.toUpperCase()%></title>
-
+    <%}else{%>
+    <title>Result</title>
+    <%}%>
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu"
@@ -47,6 +51,7 @@
     <script src="js/books.js"></script>
   </head>
   <body>
+    <div id="loading">Loading&#8230;</div>
     <div id="login_container">
       <div class="container_login">
         <div class="screen">
@@ -60,6 +65,7 @@
                   class="login__input"
                   placeholder="Username"
                   name="Username"
+                  required
                 />
               </div>
               <div class="login__field">
@@ -69,6 +75,7 @@
                   class="login__input"
                   placeholder="Password"
                   name="Password"
+                  required
                 />
               </div>
               <button class="button login__submit" type="submit">
@@ -102,7 +109,7 @@
       <div class="container-fluid">
         <!-- Nav Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" href="">Book Forest</a>
+          <a class="navbar-brand" href="">MarkmyViews</a>
 
           <button
             class="navbar-toggler"
@@ -125,14 +132,14 @@
                 <a class="nav-link" href="/books:general">Books</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#pricing">Contact</a>
+                <a class="nav-link" href="#footer">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#cta">About</a>
+                <a class="nav-link" href="/about">About</a>
               </li>
               <% if(Username){%>
               <li class="nav-item">
-                <div class="efecto"></div>
+                <div class="efecto" style="background-image:url(https://ui-avatars.com/api/?uppercase=true&name=<%=Username%>&background=random&color=fff&rounded=true) !important;"></div>
               </li>
               <li class="nav-item">
                 <a class="nav-link">
@@ -154,32 +161,53 @@
       </div>
     </section>
     <!-- Page content -->
+    <!-- content of the books page starts here -->
     <section>
-      <!-- content of the books page starts here -->
-      <h5 class="section-heading">Books</h5>
-      <div id="main_container">
-        <% Books.forEach(Book => {%>
-        <a
-          href="/book:<%=Book.ISBN%>"
-          style="text-decoration: none; text-emphasis: none; color: black"
-        >
-          <div class="card" style="width: inherit">
-            <img
-              src="<%= Book.Image %>"
-              class="card-img-top cover"
-              alt="Image not found!"
+      <form action="/search-result" method="post">
+        <div class="wrap">
+          <div class="search">
+            <input
+              name="keyword"
+              class="searchTerm"
+              placeholder="What are you looking for?"
             />
-            <div class="card-body">
-              <h5 class="card-title"><%=Book.Title%></h5>
-              <p class="card-text">ISBN- <%=Book.ISBN%></p>
-              <p class="card-text">Rating- <%=Book.Rating%></p>
-              <p class="card-text">Author- <%=Book.Author%></p>
-            </div>
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
           </div>
-        </a>
-        <%}) %>
-      </div>
-      <form action="/books:<%=Category%>" method="get">
+        </div>
+      </form>
+    </section>
+    <!-- This section is for searching the books -->
+      <!-- end of searching book section -->
+      <section class="white-section" id="pricing">
+        <h2 class="section-heading">Books</h2>
+        <div class="row" style="justify-content: center;align-items: center;text-align: center;align-items: baseline;">
+          <% for(var i=0; i<Books.length; i++) { %>
+            <div class="pricing-column col-lg-3 col-md-6" style="justify-content: center;align-items: center;padding:1vh 1vw !important;">
+              <a href="/book:<%=Books[i].ISBN%>" class="card mycard" style="width:inherit;">
+                <img
+                  src="<%=Books[i].Image%>"
+                  class="card-img-top"
+                  alt="..."
+                  style="padding:1vh 1vw;margin:1vh 1vw;width:240px;height:300px;"
+                />
+                <div class="card-body" style="width: inherit;">
+                  <h5 class="card-title"><%=Books[i].Title.substring(0,50)%>...</h5>
+                  <p class="card-text">
+                    Author-<%=Books[i].Author%>
+                  </p>
+                  <p class="card-text">
+                    Rating-<%=Books[i].Rating%>
+                  </p>
+                </div>
+              </a>
+            </div>
+        <% } %>
+        </div>
+        <br />
+      </section>
+      <!-- <form action="/books:<%=Category%>" method="get">
         <button
           style="
             position: relative;
@@ -193,9 +221,8 @@
         >
           Load More
         </button>
-      </form>
+      </form> -->
       <!-- content of the books page ends here -->
-    </section>
     <!-- Footer -->
     <footer class="white-section" id="footer">
       <div class="container-fluid">
@@ -203,7 +230,7 @@
         <i class="social-icon fab fa-twitter"></i>
         <i class="social-icon fab fa-instagram"></i>
         <i class="social-icon fas fa-envelope"></i>
-        <p>&copy; Copyright 2022 Book Forest</p>
+        <p>&copy; Copyright 2022.MarkmyViews</p>
       </div>
     </footer>
   </body>
