@@ -1,7 +1,7 @@
-function loginPageHandler (event) {
+function loginPageHandler(event) {
   document.getElementById('login_container').style.display = 'flex'
 }
-function closeButtonHandler (event) {
+function closeButtonHandler(event) {
   document.getElementById('login_container').style.display = 'none'
   document.getElementById('login_container').innerHTML = `
   <div class="container_login">
@@ -56,7 +56,7 @@ function closeButtonHandler (event) {
         </div>
       </div>`
 }
-function signUpHandler (event) {
+function signUpHandler(event) {
   document.getElementById('login_container').innerHTML = `
   <div class="container_login">
   <div class="screen">
@@ -106,7 +106,7 @@ function signUpHandler (event) {
 
 //validations for SignUp page;
 //loader javascript;
-function onReady (callback) {
+function onReady(callback) {
   var intervalId = window.setInterval(function () {
     if (document.getElementsByTagName('body')[0] !== undefined) {
       window.clearInterval(intervalId)
@@ -115,7 +115,7 @@ function onReady (callback) {
   }, 1000)
 }
 
-function setVisible (selector, visible) {
+function setVisible(selector, visible) {
   document.querySelector(selector).style.display = visible ? 'block' : 'none'
 }
 

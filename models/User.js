@@ -1,15 +1,5 @@
 const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-dotenv.config()
-mongoose.connect(
-  `${process.env.DATABASE_USERINFO}`,
-  {
-    useNewUrlParser: true
-  },
-  () => {
-    console.log('Database connected!')
-  }
-)
+
 var Schema = mongoose.Schema
 
 var UserSchema = new Schema({
@@ -32,4 +22,4 @@ var UserSchema = new Schema({
 })
 
 var UserInfo = mongoose.model('UserInfo', UserSchema)
-module.exports =  { UserInfo } 
+module.exports = { UserInfo } 

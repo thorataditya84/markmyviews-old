@@ -1,18 +1,22 @@
 .container-fluid {
   padding: 0;
 }
+
 #title .container-fluid {
   padding: 3% 15% 1%;
 }
+
 .navbar {
   padding: 0;
 }
+
 #main_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
 }
+
 .books_header {
   width: 100vw;
   font-size: 1.5rem;
@@ -22,18 +26,21 @@
   margin: 1vh 1vw;
   padding: 1vh 1vw;
 }
+
 .card {
   margin: 1vh 1vw;
   height: inherit;
   padding: 1vh 1vw;
   border: none;
 }
+
 .card-img-top {
   height: 300px;
   width: fit-content;
   border: 2px solid transparent;
   border-radius: 10px;
 }
+
 /* .cover {
   background: linear-gradient(
     to right,
@@ -51,9 +58,13 @@
 } */
 
 /* search bar css */
-a:focus,a,a:hover,a:checked{
-  color:black;
+a:focus,
+a,
+a:hover,
+a:checked {
+  color: black;
 }
+
 .search {
   width: 100%;
   position: relative;
@@ -63,7 +74,7 @@ a:focus,a,a:hover,a:checked{
 
 .searchTerm {
   width: 100%;
-  border: 3px solid #ff4c68;
+  border: 3px solid #001997;
   border-right: none;
   padding: 1vh 1vw;
   border-radius: 5px 0 0 5px;
@@ -72,12 +83,12 @@ a:focus,a,a:hover,a:checked{
 }
 
 .searchTerm:focus {
-  color: #ff4c68;
+  color: #001997;
 }
 
 .searchButton {
-  border: 1px solid #ff4c68;
-  background: #ff4c68;
+  border: 1px solid #001997;
+  background: #001997;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -95,7 +106,9 @@ a:focus,a,a:hover,a:checked{
   margin: 1vh auto;
   padding: 1vh 1vw;
 }
+
 #pricing {
   padding: 1vh 1vw;
 }
+
 /* search bar css ends here */

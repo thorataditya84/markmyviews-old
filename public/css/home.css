@@ -4,6 +4,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
 /* scroll bar css */
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -18,6 +19,7 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: #000000;
 }
+
 /* scroll bar css ends here */
 h1,
 h2,
@@ -31,6 +33,7 @@ h6 {
 p {
   color: #8f8f8f;
 }
+
 a,
 a:active,
 a:focus,
@@ -38,9 +41,11 @@ a:checked {
   text-decoration: none;
   color: white;
 }
+
 a:hover {
   color: black;
 }
+
 /* Headings */
 
 .big-heading {
@@ -63,7 +68,7 @@ a:hover {
 /* Sections */
 .colored-section {
   color: #fff;
-  background-color: #ff4c68 !important;
+  background-color: #001997 !important;
 }
 
 .white-section {
@@ -113,7 +118,7 @@ a:hover {
 /* Title Section */
 
 #title {
-  background-color: #ff4c68;
+  background-color: #001997;
   color: #fff;
   text-align: left;
 }
@@ -146,18 +151,18 @@ a:hover {
 }
 
 .icon {
-  color: #ef8172;
+  color: #0029f6;
   margin-bottom: 1rem;
 }
 
 .icon:hover {
-  color: #ff4c68;
+  color: #0024d6;
 }
 
 /* Testimonial Section */
 
 #testimonials {
-  background-color: #ef8172;
+  background-color: #0029f6;
 }
 
 .testimonial-text {
@@ -170,16 +175,36 @@ a:hover {
   margin: 20px;
 }
 
-.carousel-item em {
-  font-size: 1.5rem;
-}
 .carousel {
   position: relative;
   max-height: fit-content;
-  min-height: 50vh;
+  min-height: 20vh;
+  padding: 10px;
 }
+
+.carousel:hover a {
+  color: #ffffff;
+}
+
+.carousel-item em {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.carousel-item-container {
+  display: flex;
+  padding: 10px;
+}
+
+.carousel-item p {
+  font-size: 1.15rem;
+  padding: 10px;
+  color: white;
+}
+
 #press {
-  background-color: #ef8172;
+  background-color: #0029f6;
   padding-bottom: 3%;
 }
 
@@ -219,9 +244,10 @@ a:hover {
 /* CTA Section */
 
 /* Footer Section */
-#footer{
-  padding:10vh 0vw;
+#footer {
+  padding: 10vh 0vw;
 }
+
 .social-icon {
   margin: 20px 10px;
 }
@@ -250,6 +276,7 @@ a:hover {
   align-items: center;
   backdrop-filter: blur(10px);
 }
+
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 
 .container_login {
@@ -264,7 +291,7 @@ a:hover {
   position: relative;
   height: 600px;
   width: 360px;
-  box-shadow: 0px 0px 24px #ff4c68;
+  box-shadow: 0px 0px 24px #001997;
 }
 
 .screen__content {
@@ -330,16 +357,19 @@ a:hover {
   padding: 30px;
   padding-top: 156px;
 }
+
 .logout {
   background-color: transparent;
   border: 1px solid white;
   border-radius: 10px;
   color: white;
 }
+
 .logout:hover {
   background-color: white;
   color: black;
 }
+
 .login__field {
   padding: 20px 0px;
   position: relative;
@@ -381,7 +411,7 @@ a:hover {
   display: flex;
   align-items: center;
   width: 100%;
-  color: #ff4c68;
+  color: #001997;
   box-shadow: 0px 2px 2px #ff4561;
   cursor: pointer;
   transition: 0.2s;
@@ -390,14 +420,14 @@ a:hover {
 .login__submit:active,
 .login__submit:focus,
 .login__submit:hover {
-  border-color: #ff4c68;
+  border-color: #001997;
   outline: none;
 }
 
 .button__icon {
   font-size: 24px;
   margin-left: auto;
-  color: #ff4c68;
+  color: #001997;
 }
 
 .social-login {
@@ -420,7 +450,7 @@ a:hover {
   padding: 20px 10px;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0px 0px 8px #ff4c68;
+  text-shadow: 0px 0px 8px #001997;
 }
 
 .social-login__icon:hover {
@@ -435,9 +465,11 @@ a:hover {
   height: 32px;
   opacity: 0.3;
 }
+
 .close:hover {
   opacity: 1;
 }
+
 .close:before,
 .close:after {
   position: absolute;
@@ -447,9 +479,11 @@ a:hover {
   width: 2px;
   background-color: white;
 }
+
 .close:before {
   transform: rotate(45deg);
 }
+
 .close:after {
   transform: rotate(-45deg);
 }
@@ -467,8 +501,9 @@ a:hover {
   border-radius: 50%;
   position: relative;
   border: 5px solid #ff5174;
-  margin:auto;
+  margin: auto;
 }
+
 .efecto::before,
 .efecto::after {
   content: "";
@@ -479,6 +514,7 @@ a:hover {
   background: #4364f7;
   z-index: -1;
 }
+
 .efecto::after {
   z-index: -2;
 }
@@ -494,25 +530,30 @@ a:hover {
   align-items: center;
   padding: 1vh 1vw;
 }
+
 .alert {
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
 }
+
 .alert-close-btn {
   background-color: transparent;
   border: none;
   font-size: 2rem;
   font-weight: bold;
 }
+
 .alert-dismissible {
   padding-right: 1rem;
 }
+
 .alert-close-btn:hover {
   color: grey;
   cursor: pointer;
 }
+
 /* alert div css ends here */
 .mycard {
   min-height: 50vh;
@@ -522,6 +563,7 @@ a:hover {
   border: none;
   color: black;
 }
+
 a:link,
 a:visited,
 a:hover,
@@ -604,6 +646,7 @@ a:active {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -612,6 +655,7 @@ a:active {
     transform: rotate(360deg);
   }
 }
+
 @-moz-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -620,6 +664,7 @@ a:active {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -628,6 +673,7 @@ a:active {
     transform: rotate(360deg);
   }
 }
+
 @-o-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -636,6 +682,7 @@ a:active {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -644,6 +691,7 @@ a:active {
     transform: rotate(360deg);
   }
 }
+
 @keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -652,6 +700,7 @@ a:active {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -660,9 +709,11 @@ a:active {
     transform: rotate(360deg);
   }
 }
+
 #pricing {
   padding: 1vh 1vw !important;
 }
+
 .testimonial-image {
   width: 10%;
   margin: 20px;

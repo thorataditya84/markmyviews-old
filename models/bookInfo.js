@@ -1,16 +1,5 @@
-//this is for uploading new books into mongodb;
 const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-dotenv.config()
-mongoose.connect(
-  `${process.env.DATABASE_USERINFO}`,
-  {
-    useNewUrlParser: true
-  },
-  () => {
-    console.log('Database connected!')
-  }
-)
+
 var Schema = mongoose.Schema
 
 var BookSchema = new Schema({
